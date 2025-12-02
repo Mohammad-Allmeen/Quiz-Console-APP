@@ -6,7 +6,6 @@ Question [] questions = new Question[5]; //array that will store the questions
 String selection[] = new String[5];
 
 public QuestionService(){
-
     questions[0]= new Question(1, "What is the size of int?", "2", "6", "4", "8", "4");
     questions[1]= new Question(2, "What is the size of double?", "2", "6", "4", "8", "8");
     questions[2]= new Question(3, "What is the size of char?", "2", "6", "4", "8", "2");
@@ -27,11 +26,26 @@ public QuestionService(){
 
             Scanner sc = new Scanner(System.in);
             selection[i++] = sc.nextLine();
-
         }
 
         for(String s: selection){
             System.out.println(s);
         }
+    }
+
+    public void printScore(){
+
+        int score=0;
+        for (int i = 0; i < questions.length; i++) {
+            
+            Question que= questions[i];
+            String actualAns= que.getAnswer();
+            String userAnser= selection[i];
+
+            if(actualAns.equals(userAnser)){
+                score++;
+            }
+        }
+          System.out.println("Your final score is "+score);
     }
 }
